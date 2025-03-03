@@ -2,17 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:new_app/pantallas/contador.dart';
 
 void main() {
-  // --- debug del proyecto
-  runApp(MyApp()); //run App, llamdo a la clase MyApp
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  // creacion de la clase.
   @override
   Widget build(BuildContext context) {
-    //construimos wl widget utilizando la libreia Material.dart
     return MaterialApp(
-      //----Llamamos el conjunto de componentes del Material.app
       debugShowCheckedModeBanner: false,
       home: contador(),
     );

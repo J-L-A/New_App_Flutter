@@ -8,31 +8,62 @@ class contador extends StatefulWidget {
 }
 
 class _contadorState extends State<contador> {
-  @override
   int clickcontador = 0;
+
+  void incrementar() {
+    setState(() {
+      clickcontador++;
+    });
+  }
+
+  void disminuir() {
+    setState(() {
+      clickcontador--;
+    });
+  }
+
+  void reiniciar() {
+    setState(() {
+      clickcontador = 0;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Contador.'), //Texto a mostrar
+        title: Text('Contador.'),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('Cantidad de Clicks'), //Texto a mostrar
+            Text('Cantidad de Clicks'),
             Text(
               '$clickcontador',
               style: TextStyle(fontSize: 150, fontWeight: FontWeight.w100),
-            ), //Texto a mostrar
+            ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          clickcontador++;
-          setState(() {});
-        },
-        child: Icon(Icons.plus_one),
+      floatingActionButton: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          FloatingActionButton(
+            onPressed: incrementar,
+            child: Icon(Icons.plus_one),
+          ),
+          SizedBox(height: 10),
+          FloatingActionButton(
+            onPressed: disminuir,
+            child: Icon(Icons.exposure_minus_1),
+          ),
+          SizedBox(height: 10),
+          FloatingActionButton(
+            onPressed: reiniciar,
+            child: Icon(Icons.refresh),
+          ),
+        ],
       ),
     );
   }
